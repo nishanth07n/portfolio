@@ -1,261 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nishanth Nagesh | Portfolio</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nishanth Nagesh | AI/ML Engineer</title>
+<meta name="description" content="Portfolio of Nishanth Nagesh, an Artificial Intelligence and Machine Learning student building practical AI, ML, deep learning, Generative AI and Agentic AI applications.">
+<!-- Open Graph placeholders: replace og:url and og:image -->
+<meta property="og:title" content="Nishanth Nagesh | AI/ML Engineer">
+<meta property="og:description" content="AI/ML student building practical AI systems that turn complex problems into usable products.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="[ADD SITE URL]">
+<meta property="og:image" content="[ADD OG IMAGE URL]">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+:root{--bg:#050816;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.1);--tx:#e8ecf8;--mut:#9aa4c4;--c1:#22d3ee;--c2:#3b82f6;--c3:#8b5cf6;--grad:linear-gradient(135deg,var(--c1),var(--c2) 50%,var(--c3));--h:'Space Grotesk',system-ui,sans-serif;--b:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 var(--b);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;animation:grid 14s linear infinite;mask-image:radial-gradient(ellipse at 50% 20%,#000,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 20%,#000,transparent 75%)}
+@keyframes grid{to{background-position:0 56px,56px 0}}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--c1);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--h);line-height:1.15}
+.wrap{width:min(1120px,100% - 40px);margin:auto}
+section{padding:96px 0}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:12px;letter-spacing:-.02em}
+.sub{color:var(--mut);max-width:60ch;margin-bottom:44px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 200%;animation:shift 8s ease infinite}
+@keyframes shift{50%{background-position:100% 50%}}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.on{background:rgba(5,8,22,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nb{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:700 1.1rem var(--h);width:42px;height:42px;display:grid;place-items:center;border-radius:12px;border:1px solid var(--c1);box-shadow:0 0 18px rgba(34,211,238,.35)}
+.links{display:flex;gap:28px;align-items:center;list-style:none;padding:0}
+.links a{color:var(--mut);font-size:.95rem;transition:color .2s}.links a:hover{color:var(--tx)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font:600 .95rem var(--b);border:1px solid var(--line);background:var(--card);color:var(--tx);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--c1)}
+.btn.p{background:var(--grad);border:0;color:#04101f}.btn.p:hover{box-shadow:0 8px 28px rgba(59,130,246,.4)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--tx);width:42px;height:42px;border-radius:10px;cursor:pointer;font-size:1.2rem}
+/* hero */
+#home{min-height:100svh;display:flex;align-items:center;position:relative;padding:120px 0 80px}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.hero h1{font-size:clamp(2.6rem,8vw,5.6rem);letter-spacing:-.03em}
+.role{font:600 clamp(1rem,2.4vw,1.4rem) var(--h);letter-spacing:.18em;margin:14px 0 22px;color:var(--c1)}
+.tag{font-size:clamp(1.1rem,2.4vw,1.5rem);max-width:30ch;margin-bottom:16px;font-family:var(--h);font-weight:500}
+.hero p.d{color:var(--mut);max-width:58ch;margin-bottom:32px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero>*{animation:rise .8s both}.hero>*:nth-child(2){animation-delay:.1s}.hero>*:nth-child(3){animation-delay:.2s}.hero>*:nth-child(4){animation-delay:.3s}.hero>*:nth-child(5){animation-delay:.4s}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+/* generic cards */
+.glass{background:var(--card);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform .3s,border-color .3s,box-shadow .3s}
+.glass:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.45);box-shadow:0 14px 40px rgba(59,130,246,.15)}
+.grid{display:grid;gap:20px}
+.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.about p{color:var(--mut);margin-bottom:14px}
+.flow{display:flex;flex-direction:column;gap:10px;padding:26px}
+.flow div{padding:14px 18px;border:1px solid var(--line);border-radius:12px;font:600 1rem var(--h)}
+.flow span{text-align:center;color:var(--c1)}
+.sk{padding:24px}.sk h3{font-size:1rem;margin-bottom:14px;color:var(--c1)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{list-style:none;font-size:.85rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+/* projects */
+.proj{padding:34px;margin-bottom:24px;border-left:3px solid var(--a)}
+.proj:nth-child(even){border-left:0;border-right:3px solid var(--a)}
+.ph{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+.pn{font:700 2.2rem var(--h);color:var(--a);opacity:.85}
+.proj h3{font-size:1.5rem}
+.pd{color:var(--mut);margin-bottom:20px;max-width:70ch}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:20px}
+.cols h4{font:600 .9rem var(--h);color:var(--a);margin-bottom:6px}
+.cols p{font-size:.93rem;color:var(--mut)}
+.proj .chips{margin-bottom:22px}
+.proj .chips li{border-color:var(--a)}
+.pb{display:flex;gap:10px;flex-wrap:wrap}
+.bars{padding:30px;margin-top:40px}
+.bar{margin-bottom:18px}.bar:last-child{margin-bottom:0}
+.bar b{display:block;font:600 .95rem var(--h);margin-bottom:6px}
+.trk{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.trk i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.on .trk i,.trk.on i{width:100%}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.stat{padding:22px;text-align:center}.stat b{display:block;font:700 1.8rem var(--h)}.stat span{color:var(--mut);font-size:.88rem}
+/* timeline */
+.tl{position:relative;padding-left:34px;max-width:720px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--c1),var(--c3))}
+.ev{position:relative;margin-bottom:30px}
+.ev::before{content:"";position:absolute;left:-34px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--c1);box-shadow:0 0 12px rgba(34,211,238,.5)}
+.ev h3{font-size:1.4rem;margin-bottom:8px}
+.ev ul{padding-left:18px;color:var(--mut)}
+.fc{padding:22px}.fc h3{font-size:1.05rem;margin-bottom:6px}.fc p{color:var(--mut);font-size:.92rem}
+/* contact */
+.ct{padding:48px;text-align:center}
+.ct ul{list-style:none;padding:0;margin:26px 0;display:grid;gap:8px;color:var(--mut)}
+.ct a:not(.btn){color:var(--tx);border-bottom:1px solid var(--line)}
+.ct .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--mut);font-size:.9rem}
+footer b{display:block;font:700 1.2rem var(--h);color:var(--tx)}footer span{display:block;letter-spacing:.18em;color:var(--c1);margin:4px 0 14px;font-size:.8rem}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.on{opacity:1;transform:none}
+@media(max-width:860px){
+ section{padding:72px 0}
+ .burger{display:block}
+ .links{position:absolute;top:calc(68px + env(safe-area-inset-top,0px));left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(5,8,22,.96);border-bottom:1px solid var(--line);display:none;padding:10px 20px 20px}
+ .links.open{display:flex}.links li{padding:10px 0}
+ .g3,.g2,.about,.cols{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .proj{padding:24px;border-right:0!important;border-left:3px solid var(--a)!important}
+ .hero .btn,.pb .btn,.ct .btn{flex:1 1 100%}
+ .ct{padding:32px 20px}
 }
-
-body{
-    background:#f4f6f9;
-    color:#333;
-}
-
-header{
-    background:#1e3a8a;
-    color:white;
-    padding:20px;
-    text-align:center;
-}
-
-nav{
-    margin-top:10px;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:0 15px;
-    font-weight:bold;
-}
-
-.hero{
-    text-align:center;
-    padding:50px 20px;
-}
-
-.hero img{
-    width:170px;
-    height:170px;
-    border-radius:50%;
-    border:5px solid #1e3a8a;
-    object-fit:cover;
-}
-
-.hero h1{
-    margin-top:20px;
-    font-size:38px;
-}
-
-.hero h3{
-    color:#1e3a8a;
-    margin:10px 0;
-}
-
-.hero p{
-    max-width:700px;
-    margin:auto;
-    margin-top:15px;
-    line-height:1.8;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:25px;
-    padding:12px 25px;
-    background:#1e3a8a;
-    color:white;
-    text-decoration:none;
-    border-radius:5px;
-}
-
-section{
-    max-width:1000px;
-    margin:40px auto;
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-
-h2{
-    color:#1e3a8a;
-    margin-bottom:20px;
-}
-
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-}
-
-.skill{
-    background:#1e3a8a;
-    color:white;
-    padding:10px 20px;
-    border-radius:20px;
-}
-
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:#f7f7f7;
-    padding:20px;
-    border-radius:8px;
-    border-left:5px solid #1e3a8a;
-}
-
-.card h3{
-    margin-bottom:10px;
-}
-
-.contact p{
-    margin:10px 0;
-}
-
-footer{
-    background:#1e3a8a;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:30px;
-}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}.trk i{width:100%}}
 </style>
-
 </head>
 <body>
-
-<header>
-
-<h1>Nishanth Nagesh</h1>
-
-<p>AI & Machine Learning Student</p>
-
-<nav>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
+<nav id="nav" aria-label="Main navigation">
+ <div class="wrap nb">
+  <a class="logo" href="#home" aria-label="Nishanth Nagesh, home">NN</a>
+  <button class="burger" id="bg" aria-label="Open menu" aria-expanded="false" aria-controls="lk">☰</button>
+  <ul class="links" id="lk">
+   <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#journey">Journey</a></li><li><a href="#contact">Contact</a></li>
+   <li><a class="btn p" href="#contact">Let's Connect</a></li>
+  </ul>
+ </div>
 </nav>
 
-</header>
-
-<section class="hero">
-
-<img src="https://via.placeholder.com/170" alt="Profile Picture">
-
-<h1>Hello, I'm Nishanth</h1>
-
-<h3>AI | Machine Learning | Web Developer</h3>
-
-<p>
-Passionate about building AI-powered applications, machine learning models,
-and modern web applications. I enjoy learning new technologies and creating
-innovative solutions.
-</p>
-
-<a href="#" class="btn">Download Resume</a>
-
+<main>
+<section id="home" aria-labelledby="hero-h">
+ <canvas id="net" aria-hidden="true"></canvas>
+ <div class="wrap hero">
+  <h1 id="hero-h" class="grad">NISHANTH NAGESH</h1>
+  <p class="role">AI/ML ENGINEER</p>
+  <p class="tag">Building practical AI systems that turn complex problems into usable products.</p>
+  <p class="d">B.Tech Artificial Intelligence &amp; Machine Learning student exploring Machine Learning, Deep Learning, Generative AI, Agentic AI, Computer Vision and intelligent software systems.</p>
+  <div class="cta">
+   <a class="btn p" href="#projects">View My Projects</a>
+   <a class="btn" href="https://github.com/nishanth07n" target="_blank" rel="noopener noreferrer">GitHub</a>
+   <a class="btn" href="https://www.linkedin.com/in/nishanth-nagesh-607621298" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+ </div>
 </section>
 
-<section id="about">
+<section id="about" aria-labelledby="about-h"><div class="wrap about">
+ <div class="rv">
+  <h2 id="about-h">Turning AI Ideas Into Working Systems</h2>
+  <p>I'm a B.Tech Artificial Intelligence &amp; Machine Learning student in Bengaluru (6th semester, graduating 2027) who enjoys building practical AI applications.</p>
+  <p>My work spans Machine Learning, Deep Learning, Generative AI, Agentic AI, Computer Vision and NLP, backed by backend APIs and cloud deployment on AWS. I care about connecting each layer so a model becomes something people can actually use.</p>
+ </div>
+ <div class="glass flow rv" aria-label="From AI model to user">
+  <div>AI Model</div><span aria-hidden="true">↓</span><div>Backend</div><span aria-hidden="true">↓</span><div>Application</div><span aria-hidden="true">↓</span><div>User</div>
+ </div>
+</div></section>
 
-<h2>About Me</h2>
+<section id="skills" aria-labelledby="sk-h"><div class="wrap">
+ <h2 id="sk-h" class="rv">Skills</h2><p class="sub rv">The tools I use to take an idea from data to a deployed application.</p>
+ <div class="grid g3" id="skg"></div>
+</div></section>
 
-<p>
-I am a B.Tech Artificial Intelligence and Machine Learning student with an
-interest in AI, Deep Learning, Cloud Computing, and Full Stack Development.
-I enjoy solving real-world problems through technology and continuously
-improving my technical skills.
-</p>
+<section id="projects" aria-labelledby="pr-h"><div class="wrap">
+ <h2 id="pr-h" class="rv">Selected AI Projects</h2><p class="sub rv">From problem definition to working AI systems.</p>
+ <div id="pj"></div>
 
-</section>
+ <div class="glass bars rv" aria-label="Project capabilities">
+  <h3 style="margin-bottom:20px">What these projects have in common</h3>
+  <div class="bar"><b>End-to-End Pipeline</b><div class="trk"><i></i></div></div>
+  <div class="bar"><b>Automated Workflow</b><div class="trk"><i></i></div></div>
+  <div class="bar"><b>Model Integration</b><div class="trk"><i></i></div></div>
+  <div class="bar"><b>API Integration</b><div class="trk"><i></i></div></div>
+  <div class="bar"><b>User-Facing Application</b><div class="trk"><i></i></div></div>
+ </div>
+ <div class="stats">
+  <div class="glass stat rv"><b>5</b><span>AI/Software Projects</span></div>
+  <div class="glass stat rv"><b>6th</b><span>Semester</span></div>
+  <div class="glass stat rv"><b>2027</b><span>Graduation</span></div>
+  <div class="glass stat rv"><b>AI/ML</b><span>Focus</span></div>
+ </div>
+</div></section>
 
-<section id="skills">
+<section id="journey" aria-labelledby="jr-h"><div class="wrap">
+ <h2 id="jr-h" class="rv">Technical Journey</h2><p class="sub rv">Where I am and where I'm headed.</p>
+ <div class="tl">
+  <div class="ev rv"><h3>2027</h3><ul><li>B.Tech AI/ML graduation target</li></ul></div>
+  <div class="ev rv"><h3>2026</h3><ul><li>6th semester, Artificial Intelligence &amp; Machine Learning</li><li>Building AI/ML projects</li><li>Exploring Agentic AI, Generative AI, Computer Vision and Deep Learning</li><li>Developing backend APIs and deployable AI applications</li></ul></div>
+ </div>
 
-<h2>Skills</h2>
+ <h2 style="margin:80px 0 24px" class="rv">Currently Exploring</h2>
+ <div class="grid g3" id="fc"></div>
+</div></section>
 
-<div class="skills">
+<section id="contact" aria-labelledby="ct-h"><div class="wrap">
+ <div class="glass ct rv">
+  <h2 id="ct-h">Let's Build Something Intelligent.</h2>
+  <p style="color:var(--mut)">Have an AI idea, project collaboration, or opportunity? Let's connect.</p>
+  <ul>
+   <li>Email: <a href="mailto:nishanthnagesh42@gmail.com">nishanthnagesh42@gmail.com</a></li>
+   <li>GitHub: <a href="https://github.com/nishanth07n" target="_blank" rel="noopener noreferrer">github.com/nishanth07n</a></li>
+   <li>LinkedIn: <a href="https://www.linkedin.com/in/nishanth-nagesh-607621298" target="_blank" rel="noopener noreferrer">linkedin.com/in/nishanth-nagesh-607621298</a></li>
+   <li>Phone: <a href="tel:+919449544859">9449544859</a></li>
+  </ul>
+  <div class="cta">
+   <a class="btn p" href="mailto:nishanthnagesh42@gmail.com">Email Me</a>
+   <a class="btn" href="https://github.com/nishanth07n" target="_blank" rel="noopener noreferrer">GitHub</a>
+   <a class="btn" href="https://www.linkedin.com/in/nishanth-nagesh-607621298" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+ </div>
+</div></section>
+</main>
 
-<div class="skill">Python</div>
+<footer><div class="wrap"><b>NISHANTH NAGESH</b><span>AI/ML ENGINEER</span>© 2026 Nishanth Nagesh. Built with curiosity, code and AI.</div></footer>
 
-<div class="skill">Java</div>
+<script>
+/* ===== DATA ===== */
+const skills=[
+["Programming",["Python","Java","SQL","JavaScript"]],
+["AI & Machine Learning",["Machine Learning","Scikit-learn","Pandas","NumPy","Deep Learning","PyTorch","TensorFlow"]],
+["Generative & Agentic AI",["Generative AI","LLMs","Agentic AI","NLP","Prompt Engineering","Ollama"]],
+["Computer Vision",["CNNs","Computer Vision","Digital Image Processing","Image Classification"]],
+["Backend & Data",["FastAPI","Streamlit","REST APIs","MySQL","H2","Firebase"]],
+["Cloud & Tools",["AWS","EC2","Git","GitHub","VS Code","Jupyter"]]];
+/* ===== PROJECTS: replace the [PLACEHOLDER] links below ===== */
+const projects=[
+{n:"01",a:"#22d3ee",t:"Agentic AI – Multilingual Legal Case Preparation System",
+ d:"An agentic legal support system that turns uploaded legal information into structured case insights.",
+ p:"Legal professionals spend significant time processing multilingual documents, finding relevant Acts and IPC sections, searching previous judgments and preparing structured case information.",
+ ap:"Python, FastAPI and Streamlit with semantic search, vector-based retrieval, sentence-transformers, legal datasets and LLM-based reasoning. It processes legal documents, retrieves relevant sections and case laws, and generates structured case information across multilingual workflows.",
+ o:"An end-to-end AI workflow that reduces repetitive manual research steps in initial case preparation.",
+ s:["Python","FastAPI","Streamlit","Sentence Transformers","Vector Search","LLM","Agentic AI"],
+ g:"[LEGAL_AI_GITHUB_LINK]",l:"[LEGAL_AI_DEMO_LINK]"},
+{n:"02",a:"#3b82f6",t:"X-Ray Diagnosis AI",
+ d:"A deep-learning pipeline that classifies uploaded X-ray images and returns predictions through an API.",
+ p:"Analyzing and classifying X-ray images manually is time-consuming and needs a structured image-classification workflow.",
+ ap:"A PyTorch CNN image classifier behind a backend-oriented architecture: X-ray upload, image preprocessing, deep learning model, prediction, API response.",
+ o:"An end-to-end AI inference pipeline connecting image upload, preprocessing, model inference and API response.",
+ s:["Python","PyTorch","CNN","Computer Vision","FastAPI"],
+ g:"[XRAY_AI_GITHUB_LINK]",l:"[XRAY_AI_DEMO_LINK]"},
+{n:"03",a:"#8b5cf6",t:"AI Video Clipper",
+ d:"A web app that splits long videos into clips you can preview and download.",
+ p:"Manually splitting long videos into smaller clips is repetitive and time-consuming.",
+ ap:"FastAPI, Streamlit and FFmpeg. Upload a video, set the clip duration, split automatically, preview the clips, then download individual clips or all of them as a ZIP.",
+ o:"A manual video-splitting workflow converted into an automated web application.",
+ s:["Python","FastAPI","Streamlit","FFmpeg","REST API"],
+ g:"[VIDEO_CLIPPER_GITHUB_LINK]",l:"[VIDEO_CLIPPER_DEMO_LINK]"},
+{n:"04",a:"#22d3ee",t:"APEX INSIGHTS",
+ d:"AI-driven customer segmentation for e-commerce behavior analysis.",
+ p:"E-commerce businesses need to understand customer behavior and identify meaningful segments to improve personalization and targeting.",
+ ap:"A machine-learning solution that analyzes behavioral patterns and groups customers into segments, built with Pandas and Scikit-learn.",
+ o:"A data-driven segmentation workflow that can support customer targeting, personalization and recommendation strategies.",
+ s:["Python","Machine Learning","Data Science","Pandas","Scikit-learn"],
+ g:"[APEX_INSIGHTS_GITHUB_LINK]",l:"[APEX_INSIGHTS_DEMO_LINK]"},
+{n:"05",a:"#3b82f6",t:"CarCare AI",
+ d:"An AI-powered platform for organizing vehicle maintenance and planning service.",
+ p:"Vehicle owners often struggle to track maintenance schedules and understand upcoming service requirements.",
+ ap:"A vehicle maintenance platform that organizes maintenance information and provides intelligent service recommendations.",
+ o:"A structured digital workflow for vehicle maintenance tracking and proactive service planning.",
+ s:["Python","AI","Machine Learning","Backend/API"],
+ g:"[CARCARE_AI_GITHUB_LINK]",l:"[CARCARE_AI_DEMO_LINK]"}];
+const focus=[["Agentic AI","Multi-step agents that plan, retrieve and act."],["Generative AI","Applying generative models to real product workflows."],["Large Language Models","Prompting, local inference with Ollama and retrieval."],["Computer Vision","CNN-based image classification and processing."],["NLP","Semantic search and multilingual text understanding."],["AI Application Development","Wrapping models in APIs and usable interfaces."],["Cloud Deployment","Deploying AI services on AWS EC2."]];
+const E=s=>s.replace(/&/g,"&amp;");
+document.getElementById("skg").innerHTML=skills.map(([t,l])=>`<div class="glass sk rv"><h3>${E(t)}</h3><ul class="chips" style="padding:0">${l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("");
+document.getElementById("pj").innerHTML=projects.map(p=>`<article class="glass proj rv" style="--a:${p.a}"><div class="ph"><span class="pn">${p.n}</span><h3>${p.t}</h3></div><p class="pd">${p.d}</p>
+<div class="cols"><div><h4>Problem</h4><p>${p.p}</p></div><div><h4>Approach</h4><p>${p.ap}</p></div><div><h4>Outcome</h4><p>${p.o}</p></div></div>
+<ul class="chips" style="padding:0" aria-label="Tech stack">${p.s.map(x=>`<li>${x}</li>`).join("")}</ul>
+<div class="pb"><a class="btn" href="${p.g}" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn p" href="${p.l}" target="_blank" rel="noopener noreferrer">Demo</a></div></article>`).join("");
+document.getElementById("fc").innerHTML=focus.map(([t,d])=>`<div class="glass fc rv"><h3>${t}</h3><p>${d}</p></div>`).join("");
 
-<div class="skill">Machine Learning</div>
+/* ===== UI ===== */
+const nav=document.getElementById("nav"),bg=document.getElementById("bg"),lk=document.getElementById("lk");
+addEventListener("scroll",()=>nav.classList.toggle("on",scrollY>20),{passive:true});
+bg.onclick=()=>{const o=lk.classList.toggle("open");bg.setAttribute("aria-expanded",o);bg.textContent=o?"✕":"☰"};
+lk.addEventListener("click",e=>{if(e.target.closest("a")){lk.classList.remove("open");bg.setAttribute("aria-expanded","false");bg.textContent="☰"}});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");e.target.querySelectorAll(".trk").forEach(t=>t.classList.add("on"));io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 
-<div class="skill">Deep Learning</div>
-
-<div class="skill">HTML</div>
-
-<div class="skill">CSS</div>
-
-<div class="skill">JavaScript</div>
-
-<div class="skill">SQL</div>
-
-<div class="skill">Git</div>
-
-<div class="skill">AWS</div>
-
-</div>
-
-</section>
-
-<section id="projects">
-
-<h2>Projects</h2>
-
-<div class="projects">
-
-<div class="card">
-<h3>AI Legal Assistant</h3>
-<p>Multilingual legal case preparation system using AI.</p>
-</div>
-
-<div class="card">
-<h3>X-Ray Diagnosis AI</h3>
-<p>Deep learning application for detecting diseases from X-rays.</p>
-</div>
-
-<div class="card">
-<h3>Finance Tracker</h3>
-<p>Expense tracking application with analytics dashboard.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="contact" class="contact">
-
-<h2>Contact</h2>
-
-<p><strong>Email:</strong> nishanthnagesh42@gmail.com</p>
-
-<p><strong>Phone:</strong> +91 XXXXX XXXXX</p>
-
-<p><strong>LinkedIn:</strong> linkedin.com/in/nishanth</p>
-
-<p><strong>GitHub:</strong> github.com/nishanth</p>
-
-</section>
-
-<footer>
-
-<p>© 2026 Nishanth Nagesh | Portfolio</p>
-
-</footer>
-
+/* ===== neural network background ===== */
+(()=>{const c=document.getElementById("net"),x=c.getContext("2d"),still=matchMedia("(prefers-reduced-motion:reduce)").matches;let w,h,N=[];
+function size(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight;N=Array.from({length:Math.min(60,Math.floor(w/22))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.6+.8}))}
+function draw(){x.clearRect(0,0,w,h);for(const a of N){if(!still){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1}
+for(const b of N){const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){x.strokeStyle=`rgba(59,130,246,${.22*(1-d/130)})`;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+x.fillStyle="rgba(34,211,238,.7)";x.beginPath();x.arc(a.x,a.y,a.r,0,7);x.fill()}
+if(!still)requestAnimationFrame(draw)}
+size();draw();addEventListener("resize",()=>{size();if(still)draw()})})();
+</script>
 </body>
 </html>
